@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'ko' }}">
+<head>
+  {% include head.html %}
+</head>
+<body class="{% if page.layout == 'home' or page.layout == 'category' %}page-list{% else %}page-single{% endif %}">
+  {% include header.html %}
+
+  <div class="site-wrapper">
+    {% include sidebar.html %}
+
+    <main class="site-main">
+      {{ content }}
+    </main>
+
+    {% if page.layout == 'post' %}
+    {% include toc.html %}
+    {% endif %}
+  </div>
+
+  {% include footer.html %}
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<div class="home">
+  <section class="posts-section">
+    <h2 class="section-title">Latest Posts</h2>
+
+    <div class="posts-list">
+      {% assign posts = site.posts %}
+
+      {% for post in posts limit:10 %}
+      <article class="post-item">
+        <a href="{{ post.url | relative_url }}" class="post-item-link">
+          <div class="post-item-content">
+            <h3 class="post-item-title">{{ post.title }}</h3>
+            {% if post.description %}
+            <p class="post-item-excerpt">{{ post.description | truncate: 120 }}</p>
+            {% else %}
+            <p class="post-item-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+            {% endif %}
+          </div>
+          <div class="post-item-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+            {% if post.category %}
+            <span class="post-item-category">{{ post.category }}</span>
+            {% endif %}
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+
+      {% if site.posts.size == 0 %}
+      <p class="empty-message">No posts yet. Start writing!</p>
+      {% endif %}
+    </div>
+  </section>
+</div>

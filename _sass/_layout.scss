@@ -1,0 +1,329 @@
+// Header - Right aligned navigation
+.site-header {
+  position: fixed;
+  top: 0;
+  left: $sidebar-width;
+  right: 0;
+  height: $header-height;
+  background-color: rgba($color-background, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $color-border;
+  z-index: 100;
+
+  @media (max-width: $breakpoint-lg) {
+    left: 0;
+  }
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 0 $spacing-lg;
+}
+
+.main-nav {
+  ul {
+    display: flex;
+    gap: $spacing-lg;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    color: $color-text-light;
+    font-weight: 500;
+    font-size: $font-size-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $radius-sm;
+    transition: all $transition-base;
+
+    &:hover,
+    &.active {
+      color: $color-background;
+      background-color: $color-primary;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    display: none;
+  }
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: $spacing-xs;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: $color-primary;
+    transition: all $transition-base;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    display: flex;
+  }
+}
+
+// Site Wrapper - Three column layout
+.site-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+// Sidebar - Left fixed
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $sidebar-width;
+  height: 100vh;
+  background: linear-gradient(180deg, $color-primary 0%, $color-primary-dark 100%);
+  color: $color-background;
+  overflow-y: auto;
+  z-index: 200;
+  padding: $spacing-lg;
+
+  @media (max-width: $breakpoint-lg) {
+    transform: translateX(-100%);
+    transition: transform $transition-base;
+
+    &.is-open {
+      transform: translateX(0);
+    }
+  }
+}
+
+.sidebar-section {
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.sidebar-title {
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: $spacing-sm;
+}
+
+// Profile Section
+.profile {
+  text-align: center;
+  padding-top: $spacing-lg;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto $spacing-md;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.profile-name {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  margin-bottom: $spacing-xs;
+  color: $color-background;
+}
+
+.profile-bio {
+  font-size: $font-size-sm;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: $spacing-md;
+  line-height: 1.5;
+}
+
+.profile-links {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-sm;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-full;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: $color-background;
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+}
+
+// Recent Lists
+.recent-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: $spacing-xs;
+  }
+
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-xs;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: $font-size-sm;
+    border-radius: $radius-sm;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: $color-background;
+    }
+  }
+
+  .recent-title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .recent-date {
+    font-size: $font-size-xs;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: $spacing-xs;
+  }
+
+  .empty {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: $font-size-sm;
+    font-style: italic;
+  }
+}
+
+// Main Content Area
+.site-main {
+  flex: 1;
+  margin-left: $sidebar-width;
+  margin-top: $header-height;
+  padding: $spacing-lg;
+  min-height: calc(100vh - #{$header-height});
+
+  @media (max-width: $breakpoint-lg) {
+    margin-left: 0;
+  }
+}
+
+// TOC Sidebar - Right side (post pages only)
+.toc-sidebar {
+  position: fixed;
+  top: $header-height;
+  right: 0;
+  width: $toc-width;
+  height: calc(100vh - #{$header-height});
+  padding: $spacing-lg;
+  overflow-y: auto;
+  border-left: 1px solid $color-border;
+  background-color: $color-surface;
+
+  @media (max-width: $breakpoint-xl) {
+    display: none;
+  }
+}
+
+.toc-container {
+  position: sticky;
+  top: $spacing-lg;
+}
+
+.toc-title {
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: $color-text-muted;
+  margin-bottom: $spacing-sm;
+}
+
+.toc-nav {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: $spacing-xs;
+
+    &.h3 {
+      padding-left: $spacing-sm;
+    }
+  }
+
+  a {
+    display: block;
+    font-size: $font-size-sm;
+    color: $color-text-light;
+    padding: $spacing-xs 0;
+    border-left: 2px solid transparent;
+    padding-left: $spacing-sm;
+    transition: all $transition-fast;
+
+    &:hover,
+    &.active {
+      color: $color-primary;
+      border-left-color: $color-primary;
+    }
+  }
+}
+
+// Adjust main content when TOC is visible
+.page-single .site-main {
+  @media (min-width: $breakpoint-xl) {
+    margin-right: $toc-width;
+  }
+}
+
+// Footer
+.site-footer {
+  margin-left: $sidebar-width;
+  background-color: $color-surface;
+  padding: $spacing-lg;
+  border-top: 1px solid $color-border;
+  text-align: center;
+
+  @media (max-width: $breakpoint-lg) {
+    margin-left: 0;
+  }
+}
+
+.footer-content {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}

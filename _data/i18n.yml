@@ -1,0 +1,19 @@
+ko:
+  home: "홈"
+  about: "소개"
+  archive: "아카이브"
+  latest_posts: "최신 글"
+  view_all: "전체 보기"
+  prev_post: "이전 글"
+  next_post: "다음 글"
+  read_more: "더 읽기"
+
+en:
+  home: "Home"
+  about: "About"
+  archive: "Archive"
+  latest_posts: "Latest Posts"
+  view_all: "View All"
+  prev_post: "Previous"
+  next_post: "Next"
+  read_more: "Read More"

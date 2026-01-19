@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<div class="category-page">
+  <h1 class="page-title">Categories</h1>
+
+  <div class="categories-list">
+    {% assign categories = site.posts | map: "category" | uniq | compact %}
+
+    {% if categories.size > 0 %}
+      {% for category in categories %}
+      <section class="category-section">
+        <h2 class="category-name">{{ category }}</h2>
+        <ul class="category-posts">
+          {% assign cat_posts = site.posts | where: "category", category %}
+          {% for post in cat_posts %}
+          <li>
+            <a href="{{ post.url | relative_url }}">
+              <span class="post-title">{{ post.title }}</span>
+              <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endfor %}
+    {% else %}
+      <p class="empty-message">No categories yet.</p>
+    {% endif %}
+  </div>
+</div>

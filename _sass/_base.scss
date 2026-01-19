@@ -1,0 +1,147 @@
+// Reset & Base Styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: $font-size-base;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: 1rem;
+  line-height: $line-height-base;
+  color: $color-text;
+  background-color: $color-background;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: 700;
+  line-height: $line-height-heading;
+  color: $color-primary;
+  margin-bottom: $spacing-sm;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: $spacing-sm;
+}
+
+a {
+  color: $color-accent;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: darken($color-accent, 10%);
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  padding-left: $spacing-md;
+  margin-bottom: $spacing-sm;
+}
+
+// Code
+code {
+  font-family: $font-family-mono;
+  font-size: 0.9em;
+  background-color: $color-surface;
+  padding: 0.2em 0.4em;
+  border-radius: $radius-sm;
+}
+
+pre {
+  font-family: $font-family-mono;
+  font-size: 0.9rem;
+  background-color: $color-primary;
+  color: #f8f8f2;
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  overflow-x: auto;
+  margin-bottom: $spacing-md;
+
+  code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+}
+
+// Blockquote
+blockquote {
+  border-left: 4px solid $color-accent;
+  padding-left: $spacing-md;
+  margin: $spacing-md 0;
+  color: $color-text-light;
+  font-style: italic;
+}
+
+// Table
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $spacing-md;
+}
+
+th, td {
+  padding: $spacing-sm;
+  border-bottom: 1px solid $color-border;
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+  background-color: $color-surface;
+}
+
+// Utility Classes
+.container {
+  width: 100%;
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+
+  &--narrow {
+    max-width: $container-narrow;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  background-color: $color-primary;
+  color: $color-background;
+  font-weight: 500;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($color-primary, 10%);
+    color: $color-background;
+    transform: translateY(-2px);
+  }
+}

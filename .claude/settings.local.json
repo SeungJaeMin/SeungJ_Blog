@@ -3,7 +3,8 @@
     "allow": [
       "Bash(ruby --version:*)",
       "Bash(gem --version:*)",
-      "Bash(jekyll:*)"
+      "Bash(jekyll:*)",
+      "Bash(git checkout:*)"
     ]
   }
 }

@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+      {% if page.category %}
+      <span class="post-category">{{ page.category }}</span>
+      {% endif %}
+    </div>
+
+    <h1 class="post-title">{{ page.title }}</h1>
+
+    {% if page.description %}
+    <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+
+    {% if page.tags %}
+    <div class="post-tags">
+      {% for tag in page.tags %}
+      <span class="tag">#{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-nav">
+      {% if page.previous.url %}
+      <a href="{{ page.previous.url | relative_url }}" class="post-nav-link post-nav-link--prev">
+        <span class="post-nav-label">← Previous</span>
+        <span class="post-nav-title">{{ page.previous.title | truncate: 40 }}</span>
+      </a>
+      {% else %}
+      <div class="post-nav-link post-nav-link--empty"></div>
+      {% endif %}
+
+      {% if page.next.url %}
+      <a href="{{ page.next.url | relative_url }}" class="post-nav-link post-nav-link--next">
+        <span class="post-nav-label">Next →</span>
+        <span class="post-nav-title">{{ page.next.title | truncate: 40 }}</span>
+      </a>
+      {% endif %}
+    </div>
+  </footer>
+</article>
