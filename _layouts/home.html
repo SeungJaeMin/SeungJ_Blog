@@ -18,7 +18,10 @@ layout: default
           <div class="post-item-content">
             <div class="post-item-top">
               <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
-              {% if post.category %}
+              {% if post.subcategory %}
+              <span class="post-item-separator">/</span>
+              <span class="post-item-category">{{ post.subcategory }}</span>
+              {% elsif post.category %}
               <span class="post-item-separator">/</span>
               <span class="post-item-category">{{ post.category }}</span>
               {% endif %}
