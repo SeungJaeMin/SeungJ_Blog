@@ -11,18 +11,73 @@ layout: default
     {% if categories.size > 0 %}
       {% for category in categories %}
       <section class="category-section">
-        <h2 class="category-name">{{ category }}</h2>
-        <ul class="category-posts">
+        <h2 class="category-name" data-category="{{ category }}">
+          <span class="category-toggle">▶</span>
+          {{ category }}
+          <span class="category-count">{% assign cat_posts = site.posts | where: "category", category %}{{ cat_posts.size }}</span>
+        </h2>
+
+        <div class="category-content" style="display: none;">
           {% assign cat_posts = site.posts | where: "category", category %}
-          {% for post in cat_posts %}
-          <li>
-            <a href="{{ post.url | relative_url }}">
-              <span class="post-title">{{ post.title }}</span>
-              <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
+          {% assign subcategories = cat_posts | map: "subcategory" | uniq | compact %}
+
+          {% if subcategories.size > 0 %}
+            {% for subcategory in subcategories %}
+            <div class="subcategory-section">
+              <h3 class="subcategory-name" data-subcategory="{{ subcategory }}">
+                <span class="subcategory-toggle">▶</span>
+                {{ subcategory }}
+                <span class="subcategory-count">{% assign sub_posts = cat_posts | where: "subcategory", subcategory %}{{ sub_posts.size }}</span>
+              </h3>
+              <ul class="subcategory-posts" style="display: none;">
+                {% assign sub_posts = cat_posts | where: "subcategory", subcategory %}
+                {% for post in sub_posts %}
+                <li>
+                  <a href="{{ post.url | relative_url }}">
+                    <span class="post-title">{{ post.title }}</span>
+                    <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endfor %}
+
+            {% comment %} Posts without subcategory {% endcomment %}
+            {% assign no_sub_posts = cat_posts | where: "subcategory", nil %}
+            {% if no_sub_posts.size > 0 %}
+            <div class="subcategory-section">
+              <h3 class="subcategory-name">
+                <span class="subcategory-toggle">▶</span>
+                기타
+                <span class="subcategory-count">{{ no_sub_posts.size }}</span>
+              </h3>
+              <ul class="subcategory-posts" style="display: none;">
+                {% for post in no_sub_posts %}
+                <li>
+                  <a href="{{ post.url | relative_url }}">
+                    <span class="post-title">{{ post.title }}</span>
+                    <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+          {% else %}
+            {% comment %} No subcategories - show all posts directly {% endcomment %}
+            <ul class="category-posts-direct">
+              {% for post in cat_posts %}
+              <li>
+                <a href="{{ post.url | relative_url }}">
+                  <span class="post-title">{{ post.title }}</span>
+                  <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
       </section>
       {% endfor %}
     {% else %}
@@ -30,3 +85,39 @@ layout: default
     {% endif %}
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Category toggle
+  document.querySelectorAll('.category-name').forEach(function(el) {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', function() {
+      const content = this.nextElementSibling;
+      const toggle = this.querySelector('.category-toggle');
+      if (content.style.display === 'none') {
+        content.style.display = 'block';
+        toggle.textContent = '▼';
+      } else {
+        content.style.display = 'none';
+        toggle.textContent = '▶';
+      }
+    });
+  });
+
+  // Subcategory toggle
+  document.querySelectorAll('.subcategory-name').forEach(function(el) {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', function() {
+      const posts = this.nextElementSibling;
+      const toggle = this.querySelector('.subcategory-toggle');
+      if (posts.style.display === 'none') {
+        posts.style.display = 'block';
+        toggle.textContent = '▼';
+      } else {
+        posts.style.display = 'none';
+        toggle.textContent = '▶';
+      }
+    });
+  });
+});
+</script>

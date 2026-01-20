@@ -10,20 +10,30 @@ layout: default
       {% assign posts = site.posts %}
 
       {% for post in posts limit:10 %}
+      {% assign words = post.content | strip_html | number_of_words %}
+      {% assign reading_time = words | divided_by: 200 %}
+      {% if reading_time < 1 %}{% assign reading_time = 1 %}{% endif %}
       <article class="post-item">
         <a href="{{ post.url | relative_url }}" class="post-item-link">
           <div class="post-item-content">
+            <div class="post-item-top">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+              {% if post.category %}
+              <span class="post-item-separator">/</span>
+              <span class="post-item-category">{{ post.category }}</span>
+              {% endif %}
+              <span class="post-item-separator">/</span>
+              <span class="post-item-reading-time">{{ reading_time }}분</span>
+            </div>
             <h3 class="post-item-title">{{ post.title }}</h3>
-            {% if post.description %}
-            <p class="post-item-excerpt">{{ post.description | truncate: 120 }}</p>
-            {% else %}
-            <p class="post-item-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
-            {% endif %}
           </div>
-          <div class="post-item-meta">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>
-            {% if post.category %}
-            <span class="post-item-category">{{ post.category }}</span>
+          <div class="post-item-tag">
+            {% if post.tags.size > 0 %}
+            <span class="tag-badge">{{ post.tags | first }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+              <line x1="7" y1="7" x2="7.01" y2="7"></line>
+            </svg>
             {% endif %}
           </div>
         </a>

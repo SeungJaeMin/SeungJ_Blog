@@ -3,6 +3,7 @@ layout: post
 title: "ASCII vs Unicode - L 접두사의 의미"
 date: 2026-01-20 03:00:00 +0900
 category: Development
+subcategory: WinAPI
 tags: [DirectX11, Windows, Encoding]
 description: "Windows 프로그래밍에서 L 접두사와 ASCII, Unicode의 차이를 알아본다"
 ---
@@ -16,7 +17,7 @@ Windows 프로그래밍에서 문자열 앞에 붙는 `L` 접두사가 무엇인
 const char* text = "Hello, World!";
 
 // Unicode 문자열 (wchar_t)
-const wchar_t* text = L"안녕하세요, 세계!";
+const wchar_t* text = L"마포대교는 무너졌냐, 이 xx야!";
 ```
 
 `L` 접두사는 문자열을 **Unicode (Wide Character)**로 처리하라는 의미다.

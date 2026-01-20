@@ -3,6 +3,7 @@ layout: post
 title: "Windows MessageBox() 함수 완벽 가이드"
 date: 2026-01-20 02:00:00 +0900
 category: Development
+subcategory: WinAPI
 tags: [DirectX11, Windows, WinAPI]
 description: "Windows MessageBox() 함수의 매개변수, 스타일 옵션, 반환값을 상세히 알아본다"
 ---

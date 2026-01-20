@@ -3,6 +3,7 @@ layout: post
 title: "3D Geometry Dash Maker - 요구사항 정리"
 date: 2026-01-20 00:00:00 +0900
 category: Development
+subcategory: DirectX11
 tags: [DirectX11, GameEngine, Requirements]
 description: "DirectX 11 기반 3D Geometry Dash Maker 게임 엔진의 요구사항 및 Use Case 정리"
 ---

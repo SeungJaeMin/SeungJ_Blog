@@ -3,6 +3,7 @@ layout: post
 title: "WinMain 기본 구조와 첫 번째 윈도우 프로그램"
 date: 2026-01-20 01:00:00 +0900
 category: Development
+subcategory: WinAPI
 tags: [DirectX11, Windows, WinAPI]
 description: "Windows 애플리케이션의 진입점인 WinMain 함수의 기본 구조를 알아본다"
 ---
