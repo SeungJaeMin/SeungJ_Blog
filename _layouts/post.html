@@ -48,5 +48,24 @@ layout: default
       </a>
       {% endif %}
     </div>
+
+    {% if page.category %}
+    {% assign related_posts = site.posts | where: "category", page.category | where_exp: "post", "post.url != page.url" %}
+    {% if related_posts.size > 0 %}
+    <div class="related-posts">
+      <h3 class="related-posts-title">{{ page.category }}의 다른 글</h3>
+      <ul class="related-posts-list">
+        {% for post in related_posts limit:5 %}
+        <li>
+          <a href="{{ post.url | relative_url }}">
+            <span class="related-post-title">{{ post.title }}</span>
+            <span class="related-post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% endif %}
   </footer>
 </article>

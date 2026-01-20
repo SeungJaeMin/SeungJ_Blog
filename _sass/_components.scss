@@ -288,6 +288,67 @@
   border-top: 1px solid $color-border;
 }
 
+// Related Posts (같은 카테고리 글)
+.related-posts {
+  margin-top: $spacing-xl;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $color-border;
+}
+
+.related-posts-title {
+  font-size: 1.1rem;
+  color: $color-primary;
+  margin-bottom: $spacing-md;
+  padding-left: $spacing-sm;
+  border-left: 3px solid $color-primary;
+}
+
+.related-posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: $color-surface;
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  li {
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-sm $spacing-md;
+    color: $color-text;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: rgba($color-primary, 0.05);
+
+      .related-post-title {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .related-post-title {
+    font-weight: 500;
+    transition: color $transition-fast;
+  }
+
+  .related-post-date {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    flex-shrink: 0;
+    margin-left: $spacing-sm;
+  }
+}
+
 .post-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
