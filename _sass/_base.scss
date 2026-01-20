@@ -1,24 +1,48 @@
-// Fonts - 국립박물관문화재단클래식
+// Fonts - Pretendard
 @font-face {
-    font-family: 'MuseumClassic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식L.woff') format('woff');
-    font-weight: 300;
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+    font-weight: 100;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'MuseumClassic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식M.woff') format('woff');
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
     font-weight: 500;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'MuseumClassic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식B.woff') format('woff');
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
 }
+
+// Code Font - JetBrains Mono
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
 // Reset & Base Styles
 *,
@@ -37,6 +61,7 @@ html {
 body {
   font-family: $font-family-base;
   font-size: 1rem;
+  font-weight: $font-weight-extralight;
   line-height: $line-height-base;
   color: $color-text;
   background-color: $color-background;
@@ -47,10 +72,14 @@ body {
 // Typography
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-family-heading;
-  font-weight: 700;
+  font-weight: $font-weight-semibold;
   line-height: $line-height-heading;
   color: $color-primary;
   margin-bottom: $spacing-sm;
+}
+
+strong, b {
+  font-weight: $font-weight-medium;
 }
 
 h1 { font-size: 2.5rem; }
@@ -89,6 +118,7 @@ ul, ol {
 code {
   font-family: $font-family-mono;
   font-size: 0.9em;
+  font-weight: 400;
   background-color: $color-surface;
   padding: 0.2em 0.4em;
   border-radius: $radius-sm;
@@ -97,6 +127,7 @@ code {
 pre {
   font-family: $font-family-mono;
   font-size: 0.9rem;
+  font-weight: 400;
   background-color: $color-primary;
   color: #f8f8f2;
   padding: $spacing-md;
@@ -108,6 +139,7 @@ pre {
     background: none;
     padding: 0;
     color: inherit;
+    font-weight: 400;
   }
 }
 

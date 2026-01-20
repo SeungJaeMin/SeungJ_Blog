@@ -30,6 +30,13 @@ instagram_username: ""
 lang: ko
 
 # Build settings
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap

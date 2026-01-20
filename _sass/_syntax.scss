@@ -1,0 +1,141 @@
+// Syntax Highlighting - Dracula Theme
+// https://draculatheme.com/
+
+$dracula-bg: #282a36;
+$dracula-current: #44475a;
+$dracula-fg: #f8f8f2;
+$dracula-comment: #6272a4;
+$dracula-cyan: #8be9fd;
+$dracula-green: #50fa7b;
+$dracula-orange: #ffb86c;
+$dracula-pink: #ff79c6;
+$dracula-purple: #bd93f9;
+$dracula-red: #ff5555;
+$dracula-yellow: #f1fa8c;
+
+.highlight {
+  background: $dracula-bg;
+  border-radius: $radius-md;
+  margin-bottom: $spacing-md;
+  overflow-x: auto;
+  position: relative;
+
+  pre {
+    margin: 0;
+    padding: $spacing-md;
+    background: transparent;
+  }
+
+  code {
+    font-family: $font-family-mono;
+    font-weight: 400;
+    background: transparent;
+    color: $dracula-fg;
+  }
+
+  // Comments
+  .c, .c1, .cm, .cs, .cp { color: $dracula-comment; font-style: italic; }
+
+  // Errors
+  .err { color: $dracula-red; }
+
+  // Keywords
+  .k, .kc, .kd, .kn, .kp, .kr { color: $dracula-pink; }
+  .kt { color: $dracula-cyan; } // Type
+
+  // Operators
+  .o, .ow { color: $dracula-pink; }
+
+  // Names
+  .n { color: $dracula-fg; }
+  .na { color: $dracula-green; }  // Attribute
+  .nb { color: $dracula-cyan; }   // Builtin
+  .nc { color: $dracula-cyan; }   // Class
+  .nd { color: $dracula-green; }  // Decorator
+  .ne { color: $dracula-cyan; }   // Exception
+  .nf { color: $dracula-green; }  // Function
+  .ni { color: $dracula-fg; }     // Entity
+  .nl { color: $dracula-fg; }     // Label
+  .nn { color: $dracula-fg; }     // Namespace
+  .no { color: $dracula-purple; } // Constant
+  .nt { color: $dracula-pink; }   // Tag
+  .nv { color: $dracula-fg; }     // Variable
+
+  // Strings
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sr, .ss, .sx { color: $dracula-yellow; }
+
+  // Numbers
+  .m, .mf, .mh, .mi, .mo, .il { color: $dracula-purple; }
+
+  // Variables
+  .vc, .vg, .vi { color: $dracula-fg; }
+
+  // Punctuation
+  .p { color: $dracula-fg; }
+
+  // Generic
+  .gd { color: $dracula-red; }    // Deleted
+  .gi { color: $dracula-green; }  // Inserted
+  .gh { color: $dracula-comment; } // Heading
+  .gu { color: $dracula-comment; } // Subheading
+  .ge { font-style: italic; }     // Emphasis
+  .gs { font-weight: bold; }      // Strong
+
+  // Line numbers
+  .lineno {
+    color: $dracula-comment;
+    padding-right: $spacing-sm;
+    border-right: 1px solid $dracula-current;
+    margin-right: $spacing-sm;
+    user-select: none;
+  }
+
+  // Selection
+  ::selection {
+    background: $dracula-current;
+  }
+}
+
+// Inline code (not in highlight block)
+code:not(.highlight code) {
+  background-color: rgba($dracula-bg, 0.1);
+  color: $dracula-pink;
+}
+
+// Copy button
+.copy-btn {
+  position: absolute;
+  top: $spacing-xs;
+  right: $spacing-xs;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background-color: $dracula-current;
+  color: $dracula-fg;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease;
+  z-index: 10;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background-color: $dracula-comment;
+  }
+
+  &.copied {
+    background-color: $dracula-green;
+    color: $dracula-bg;
+  }
+}
+
+.highlight:hover .copy-btn,
+pre:hover .copy-btn {
+  opacity: 1;
+}
