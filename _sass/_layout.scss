@@ -5,10 +5,11 @@
   left: $sidebar-width;
   right: 0;
   height: $header-height;
-  background-color: rgba($color-background, 0.95);
+  background-color: var(--color-background);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid var(--color-border);
   z-index: 100;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 
   @media (max-width: $breakpoint-lg) {
     left: 0;
@@ -33,7 +34,7 @@
   }
 
   a {
-    color: $color-text-light;
+    color: var(--color-text-light);
     font-weight: 500;
     font-size: $font-size-sm;
     text-transform: uppercase;
@@ -44,13 +45,59 @@
 
     &:hover,
     &.active {
-      color: $color-background;
-      background-color: $color-primary;
+      color: var(--color-background);
+      background-color: var(--color-primary);
     }
   }
 
   @media (max-width: $breakpoint-md) {
     display: none;
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-left: $spacing-lg;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: $radius-md;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: var(--color-surface);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .icon-sun {
+    display: block;
+  }
+
+  .icon-moon {
+    display: none;
+  }
+}
+
+[data-theme="dark"] .theme-toggle {
+  .icon-sun {
+    display: none;
+  }
+
+  .icon-moon {
+    display: block;
   }
 }
 
@@ -67,7 +114,7 @@
     display: block;
     width: 24px;
     height: 2px;
-    background-color: $color-primary;
+    background-color: var(--color-primary);
     transition: all $transition-base;
   }
 
@@ -252,8 +299,9 @@
   height: calc(100vh - #{$header-height});
   padding: $spacing-lg;
   overflow-y: auto;
-  border-left: 1px solid $color-border;
-  background-color: $color-surface;
+  border-left: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 
   @media (max-width: $breakpoint-xl) {
     display: none;
@@ -269,7 +317,7 @@
   font-size: $font-size-xs;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: $color-text-muted;
+  color: var(--color-text-muted);
   margin-bottom: $spacing-sm;
 }
 
@@ -291,7 +339,7 @@
   a {
     display: block;
     font-size: $font-size-sm;
-    color: $color-text-light;
+    color: var(--color-text-light);
     padding: $spacing-xs 0;
     border-left: 2px solid transparent;
     padding-left: $spacing-sm;
@@ -299,8 +347,8 @@
 
     &:hover,
     &.active {
-      color: $color-primary;
-      border-left-color: $color-primary;
+      color: var(--color-primary);
+      border-left-color: var(--color-primary);
     }
   }
 }
@@ -315,10 +363,11 @@
 // Footer
 .site-footer {
   margin-left: $sidebar-width;
-  background-color: $color-surface;
+  background-color: var(--color-surface);
   padding: $spacing-lg;
-  border-top: 1px solid $color-border;
+  border-top: 1px solid var(--color-border);
   text-align: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 
   @media (max-width: $breakpoint-lg) {
     margin-left: 0;
@@ -327,5 +376,5 @@
 
 .footer-content {
   font-size: $font-size-sm;
-  color: $color-text-muted;
+  color: var(--color-text-muted);
 }
