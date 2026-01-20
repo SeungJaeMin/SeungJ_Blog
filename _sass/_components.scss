@@ -345,6 +345,32 @@
   border-radius: $radius-sm;
 }
 
+// Page Layout
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: $spacing-xl;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px solid $color-border;
+}
+
+.page-title {
+  font-size: 2rem;
+  color: $color-primary;
+}
+
+.page-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+
+  p {
+    margin-bottom: $spacing-md;
+  }
+}
+
 // Category Page
 .category-page {
   max-width: 800px;

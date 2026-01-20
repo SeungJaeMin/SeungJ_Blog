@@ -1,3 +1,25 @@
+// Fonts - 국립박물관문화재단클래식
+@font-face {
+    font-family: 'MuseumClassic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식L.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MuseumClassic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식M.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MuseumClassic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식B.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
 // Reset & Base Styles
 *,
 *::before,
@@ -48,7 +70,7 @@ a {
   transition: color $transition-fast;
 
   &:hover {
-    color: darken($color-accent, 10%);
+    color: $color-primary-dark;
   }
 }
 
@@ -140,7 +162,7 @@ th {
   cursor: pointer;
 
   &:hover {
-    background-color: lighten($color-primary, 10%);
+    background-color: $color-primary-light;
     color: $color-background;
     transform: translateY(-2px);
   }

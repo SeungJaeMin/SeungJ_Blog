@@ -11,10 +11,10 @@ $color-text: #333;
 $color-text-light: #666;
 $color-text-muted: #999;
 
-// Typography
-$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-$font-family-heading: $font-family-base;
-$font-family-mono: 'SF Mono', Monaco, 'Cascadia Code', Consolas, monospace;
+// Typography - 국립박물관문화재단클래식
+$font-family-base: 'MuseumClassic', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-family-heading: 'MuseumClassic', sans-serif;
+$font-family-mono: 'SF Mono', Monaco, Consolas, monospace;
 
 $font-size-base: 16px;
 $font-size-sm: 14px;
